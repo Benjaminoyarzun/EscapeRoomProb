@@ -26,11 +26,27 @@ def nivel1():
 
         if respuesta == respuesta_correcta:
             print("\n✓ Correcto.")
-            print("6 resultados del dado × 2 resultados de la moneda = 12.")
+            print(
+                "El espacio muestral es el conjunto de todos "
+                "los resultados posibles."
+            )
+            print(
+                "Cada uno de los 6 resultados del dado puede "
+                "combinarse con los 2 resultados de la moneda."
+            )
+            print("6 × 2 = 12 resultados posibles.")
             print("Nivel 2 desbloqueado.")
             return
 
         print("✗ Respuesta incorrecta. Intente nuevamente.")
+        print(
+            "Recuerde que cada resultado del dado puede combinarse "
+            "con cada resultado de la moneda."
+        )
+        print(
+            "Piense cuántas combinaciones se forman con "
+            "6 resultados del dado y 2 de la moneda."
+        )
 
 
 def nivel2():
@@ -65,6 +81,10 @@ def nivel2():
             return
 
         print("✗ Respuesta incorrecta. Intente nuevamente.")
+        print(
+            "Recuerde que la probabilidad clásica se calcula "
+            "dividiendo los casos favorables por los casos posibles."
+        )
 
 
 def nivel3():
@@ -72,9 +92,8 @@ def nivel3():
     print("NIVEL 3 - PROBABILIDAD FRECUENCIAL")
     print("=" * 50)
 
+    resultados = [random.choice(["cara", "cruz"])for _ in range(100)]
     while True:
-        resultados = [
-    random.choice(["cara", "cruz"])for _ in range(100)]
 
         caras = resultados.count("cara")
         cruces = resultados.count("cruz")
@@ -94,20 +113,24 @@ def nivel3():
                 f"La frecuencia relativa se obtiene dividiendo "
                 f"los {caras} casos de cara por los 100 lanzamientos."
             )
-            print(f"Frecuencia relativa = {caras}/100 = {frecuencia_relativa}%.")
+            print(f"Frecuencia relativa = {caras}/100 = {frecuencia_relativa:.2f}%.")
+            print("Este porcentaje representa lo observado en la simulación "
+                "y puede diferir del 50% teórico.")
             print("Nivel 4 desbloqueado.")
             return
-
-        print("✗ Respuesta incorrecta.")
-
+        print("✗ Respuesta incorrecta. Intente nuevamente.")
+        print(
+            "La frecuencia relativa describe los resultados observados. "
+            "No la confundas con el 50% teórico de una moneda equilibrada."
+        )
         opcion = input(
-            "Presione ENTER para intentar nuevamente "
+            "Presione ENTER para intentar nuevamente con la misma simulación, "
             "o escriba S para generar otra simulación: "
         ).strip().lower()
 
         if opcion == "s":
+            resultados = [random.choice(["cara", "cruz"]) for _ in range(100)]
             print("Generando una nueva simulación...")
-
 
 def nivel4():
     print("\n" + "=" * 50)
@@ -145,8 +168,10 @@ def nivel4():
             print("P(Aprobó | Grupo A) = 12/15 = 80%.")
             print("Nivel 5 desbloqueado.")
             return
-
         print("✗ Respuesta incorrecta. Intente nuevamente.")
+        print(
+            "La condición limita la muestra al Grupo A. "
+            "Considere únicamente a los estudiantes de ese grupo.")
 
 
 def nivel5():
@@ -170,23 +195,41 @@ def nivel5():
         if respuesta == "1":
             print("\n✓ Correcto.")
             print()
+            print("¿Por qué son independientes?")
+            print(
+                "El resultado del dado no afecta al de la moneda."
+            )
+            print(
+                "Aunque el dado salga par o impar, la probabilidad "
+                "de obtener cara sigue siendo del 50%."
+            )
+            print()
             print("P(A) = 3/6 = 1/2")
             print("P(B) = 1/2")
             print("P(A ∩ B) = 3/12 = 1/4")
             print("P(A) × P(B) = 1/2 × 1/2 = 1/4")
             print()
             print(
-                "Como P(A ∩ B) = P(A) × P(B), "
-                "los eventos son independientes."
-            )
+                "Como la probabilidad de que ocurran ambos eventos "
+                "coincide con el producto de sus probabilidades, "
+                "se confirma que son independientes."
+            )            
             print("\n¡Felicitaciones! Completaste el escape room.")
             return
 
-        if respuesta == "2":
+        elif respuesta == "2":
             print("✗ Incorrecto. Los eventos son independientes.")
+            print(
+                "Saber si el dado salió par o impar no cambia "
+                "la probabilidad de obtener cara en la moneda."
+            )
+            print(
+                "Cada resultado del dado puede combinarse con "
+                "cara o cruz, sin alterar las probabilidades "
+                "de la moneda."
+            )
         else:
             print("Seleccione 1 o 2.")
-
 
 def main():
     print("=" * 50)
